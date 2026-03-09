@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sk.spse.ulohaStyly5.declarative.Controller"
+      stylesheets="@styles.css"
+      spacing="10"
+      alignment="CENTER">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <Label text="Zoznam potravín" styleClass="title-label" />
+
+    <TableView fx:id="tableView" prefHeight="250" prefWidth="400">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+            <TableColumn fx:id="nazovColumn" text="Názov" prefWidth="150" />
+            <TableColumn fx:id="kalorieColumn" text="Kalórie" prefWidth="100" />
+            <TableColumn fx:id="cenaColumn" text="Cena" prefWidth="100" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <padding>
+            <Insets top="10" />
+        </padding>
+        <Button text="Pridaj potravinu" onAction="#pridajPotravinu" styleClass="action-button" />
+        <Button text="Vymaž" onAction="#vymaz" styleClass="action-button" />
+        <Button text="Zatvor" onAction="#zatvor" styleClass="action-button" />
+    </HBox>
+</VBox>

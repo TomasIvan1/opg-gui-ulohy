@@ -1,0 +1,105 @@
+package sk.spse.uloha2.procedural;
+
+import javafx.application.Platform;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
+
+///
+/// Trieda pre procedurálne vytvorené GUI
+///
+/// Upravujte túto triedu
+///
+
+public class Application extends javafx.application.Application {
+
+    @Override
+    public void start(Stage stage) {
+        GridPane root = new GridPane();
+        root.setAlignment(Pos.CENTER);
+        root.setHgap(10);
+        root.setVgap(10);
+        root.setPadding(new Insets(10));
+
+        ColumnConstraints col0 = new ColumnConstraints();
+        col0.setHalignment(HPos.RIGHT);
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setHgrow(Priority.ALWAYS);
+        root.getColumnConstraints().addAll(col0, col1);
+
+        Label menoLabel = new Label("Užívateľské meno:");
+        TextField menoField = new TextField();
+        menoField.setPromptText("zadaj meno");
+        menoField.setPrefColumnCount(10);
+        menoField.setMaxWidth(140);
+
+        Label hesloLabel = new Label("Heslo:");
+        PasswordField hesloField = new PasswordField();
+        hesloField.setPromptText("zadaj heslo");
+        hesloField.setPrefColumnCount(10);
+        hesloField.setMaxWidth(140);
+
+        Label pohlavieLabel = new Label("Pohlavie:");
+
+        ToggleGroup pohlavieGroup = new ToggleGroup();
+        RadioButton muzRadio = new RadioButton("Muž");
+        muzRadio.setToggleGroup(pohlavieGroup);
+        muzRadio.setSelected(true);
+
+        RadioButton zenaRadio = new RadioButton("Žena");
+        zenaRadio.setToggleGroup(pohlavieGroup);
+
+        HBox pohlavieBox = new HBox(10, muzRadio, zenaRadio);
+        pohlavieBox.setAlignment(Pos.CENTER_LEFT);
+
+        Separator separator = new Separator();
+
+        Button registerButton = new Button("Registrovať");
+        registerButton.setOnAction(e -> {
+            String meno = menoField.getText();
+            String heslo = hesloField.getText();
+            String pohlavie = ((RadioButton) pohlavieGroup.getSelectedToggle()).getText();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Registrácia užívateľa");
+            alert.setHeaderText("Registrácia prebehla úspešne");
+            alert.setContentText("Užívateľ " + meno + " (" + pohlavie + ") s heslom " + heslo + " bol pridaný do systému");
+            alert.showAndWait();
+        });
+
+        Button closeButton = new Button("Zavrieť");
+        closeButton.setOnAction(e -> Platform.exit());
+
+        HBox buttonsBox = new HBox(10, registerButton, closeButton);
+        buttonsBox.setAlignment(Pos.TOP_RIGHT);
+
+        root.add(menoLabel, 0, 0);
+        root.add(menoField, 1, 0);
+        root.add(hesloLabel, 0, 1);
+        root.add(hesloField, 1, 1);
+        root.add(pohlavieLabel, 0, 2);
+        root.add(pohlavieBox, 1, 2);
+        root.add(separator, 0, 3, 2, 1);
+        root.add(buttonsBox, 0, 4, 2, 1);
+
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Procedural Application 2");
+        stage.setScene(scene);
+        stage.show();
+    }
+}
