@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sk.spse.ulohaStyly1.declarative.Controller">
+   <children>
+      <HBox alignment="CENTER_RIGHT" spacing="20">
+
+          <padding>
+              <Insets topRightBottomLeft="10" />
+          </padding>
+
+          <Label text="Stupne Celsia:" />
+
+          <TextField fx:id="celsiusField" onKeyTyped="#onCelsiusChange" prefWidth="182.0" style="-fx-padding: 10 20 10 20;" text="0" />
+         <Label text="°C" />
+      </HBox>
+      <HBox fx:id="d" alignment="CENTER_RIGHT" spacing="20">
+         <padding>
+            <Insets topRightBottomLeft="10" />
+         </padding>
+         <children>
+            <Label text="Stupne Fahrenheita:" />
+            <TextField fx:id="fahrenheitField" onKeyTyped="#onFahrenheitChange" prefWidth="185.0" style="-fx-padding: 10 20 10 20;" text="0" />
+            <Label text="°F" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
