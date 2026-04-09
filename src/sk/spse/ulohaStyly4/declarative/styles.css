@@ -1,0 +1,22 @@
+.bottom-bar {
+    -fx-background-color: #EAEAEA;
+}
+
+.quote-label {
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+}
+
+.author-label {
+    -fx-font-size: 12px;
+}
+
+.randomize-button {
+    -fx-font-size: 13px;
+    -fx-padding: 5 15;
+}
+
+.close-button {
+    -fx-font-size: 13px;
+    -fx-padding: 5 15;
+}
